@@ -1,10 +1,7 @@
 require 'httparty'
 
-#Starter Code:
 seven_wonders = ["Great Pyramid of Giza", "Hanging Gardens of Babylon", "Colossus of Rhodes", "Pharos of Alexandria", "Statue of Zeus at Olympia", "Temple of Artemis", "Mausoleum at Halicarnassus"]
-
 BASE_URL = 'https://us1.locationiq.com/v1/search.php'
-
 seven_wonders_hash = Hash.new(0)
 
 seven_wonders_locations = seven_wonders.map do |wonder|
@@ -13,8 +10,8 @@ seven_wonders_locations = seven_wonders.map do |wonder|
     q: wonder,
     format: 'json'
   }
-  sleep(1)
   response = HTTParty.get(BASE_URL, query: query_parameters)[0]
+  sleep(0.25)
   seven_wonders_hash[wonder] = {
     "lat" => response["lat"],
     "lng" => response["lon"]
