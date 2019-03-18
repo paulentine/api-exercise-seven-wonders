@@ -1,14 +1,15 @@
+require 'dotenv'
 require 'httparty'
 
+Dotenv.load
 BASE_URL = 'https://us1.locationiq.com/v1/search.php'
-KEY = 'b1bb297e767eac'
 
 seven_wonders = ["Great Pyramid of Giza", "Hanging Gardens of Babylon", "Colossus of Rhodes", "Pharos of Alexandria", "Statue of Zeus at Olympia", "Temple of Artemis", "Mausoleum at Halicarnassus"]
 seven_wonders_hash = Hash.new(0)
 
 seven_wonders.map do |wonder|
   query_parameters = {
-    key: KEY,
+    key: ENV['KEY'],
     q: wonder,
     format: 'json'
   }
